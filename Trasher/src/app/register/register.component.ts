@@ -9,11 +9,13 @@ export class RegisterComponent implements OnInit {
   
   Roles: any = ['Admin', 'Author', 'Reader'];
 
-  constructor() { 
-    let selected = false;
+  constructor() {
+    let selected = true;
   }
+  
 
-  ngOnInit(): void {
-  }
+    ngOnInit() {
+      // ...
+    }
 
 }
