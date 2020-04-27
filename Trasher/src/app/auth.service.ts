@@ -8,6 +8,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 })
 export class AuthService {
 
+
   constructor(public afAuth: AngularFireAuth) { }
 
     doFacebookLogin(){
@@ -35,6 +36,15 @@ doGoogleLogin(){
     .then(res => {
       resolve(res);
     })
+  })
+}
+
+doRegister(value){
+  return new Promise<any>((resolve, reject) => {
+    firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
+    .then(res => {
+      resolve(res);
+    }, err => reject(err))
   })
 }
 
