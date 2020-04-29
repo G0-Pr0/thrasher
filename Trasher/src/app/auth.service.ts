@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
-import { User } from './user';
+import { User } from './services/user';
 
 @Injectable({
   providedIn: 'root'
@@ -99,8 +99,8 @@ doRegister(value){
   }
 
   SetUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.id}`);
-    const userData: User {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userData: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
