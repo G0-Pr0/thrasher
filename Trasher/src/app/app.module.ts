@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 
 
@@ -22,7 +23,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   declarations: [
     AppComponent,
     LoginPageComponent,
-    RegisterComponent
+    RegisterComponent,
+    EmailVerificationComponent
   ],
   imports: [
     BrowserModule,
