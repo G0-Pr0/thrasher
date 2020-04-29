@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterComponent } from './register/register.component'; 
-import { UserComponent } from './user/user.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
+//import { user } from './services/user'
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegisterComponent},
-  { path: 'user', component: UserComponent}
+  { path: 'verify-email-address', component: EmailVerificationComponent}
 ];
 
 @NgModule({

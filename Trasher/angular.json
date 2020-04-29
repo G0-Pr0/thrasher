@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "Trasher"
+  "defaultProject": "Trasher",
+  "cli": {
+    "analytics": "7d9652f6-c1a3-45e8-a94c-cabbef8366b1"
+  }
 }

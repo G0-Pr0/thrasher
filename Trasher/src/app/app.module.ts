@@ -14,7 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { UserComponent } from './user/user.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
+
 
 
 
@@ -23,7 +24,7 @@ import { UserComponent } from './user/user.component';
     AppComponent,
     LoginPageComponent,
     RegisterComponent,
-    UserComponent
+    EmailVerificationComponent
   ],
   imports: [
     BrowserModule,

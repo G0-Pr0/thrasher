@@ -1,23 +1,28 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-    <mat-card class="box">
-      <mat-card-header>
-        <mat-card-title>Register</mat-card-title>
-      </mat-card-header>
-  
-      <form [formGroup]="registerForm">
-        <mat-card-content>
-          <mat-form-field class="example-full-width form-group" >
-            <input matInput placeholder="Email" type="email" formControlName="email" class="form-control" required>
-          </mat-form-field>
-          <mat-form-field class="example-full-width form-group">
-            <input matInput placeholder="Password" type="password" class="form-control" formControlName="password" required>
-            <label class="error">{{errorMessage}}</label>
-            <label class="success">{{successMessage}}</label>
-          </mat-form-field>
-        </mat-card-content>
-  
-        <button mat-stroked-button color="accent" (click)="tryRegister(registerForm.value)" class="btn-block">Register</button>
+<html>
 
-      </form>
-    </mat-card>
+<head>
+  <title> Singup Form Design</title>
+  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+</head>
+
+<body>
+  <div id="login-box">
+    <div class="left-box">
+      <h1> Sign Up </h1>
+      <input type="text" name="username" placeholder="Username" #userName />
+      <input type="text" name="email" placeholder="Email" #userEmail required />
+      <input type="password" name="password" placeholder="Password" #userPassword required />
+      <input type="password" name="password2" placeholder="Retype Password" />
+      <input type="submit" name="singup-button" placeholder="Sing Up"
+        (click)="authService.SignUp(userEmail.value, userPassword.value)" />
+    </div>
+    <div class="right-box">
+      <span class="signinwith">Sign in with Social Network </span>
+      <button class="social facebook" (click)="authService.FacebookAuth()">Log in with Facebook</button>
+      <button class="social google" (click)="authService.GoogleAuth()">Log in with Google+</button>
+    </div>
+    <div class="or">OR</div>
   </div>
+</body>
+
+</html>

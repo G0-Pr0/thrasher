@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
-import { User } from './user';
+import { User } from './services/user';
 
 @Injectable({
   providedIn: 'root'
@@ -59,14 +59,25 @@ doGoogleLogin(){
   })
 }
 
-doRegister(value){
-  return new Promise<any>((resolve, reject) => {
-    firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
-    .then(res => {
-      resolve(res);
-    }, err => reject(err))
+SignUp(email, password) {
+  return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+    .then((result) => {
+      /* Call the SendVerificaitonMail() function when new user sign 
+      up and returns promise */
+      this.SendVerificationMail();
+      this.SetUserData(result.user);
+    }).catch((error) => {
+      window.alert(error.message)
+    })
+}
+
+SendVerificationMail() {
+  return this.afAuth.auth.currentUser.sendEmailVerification()
+  .then(() => {
+    this.router.navigate(['verify-email-address']);
   })
 }
+
 
   forgotPassword(passwordResetEmail){
     return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
@@ -82,8 +93,12 @@ doRegister(value){
      return (user !== null && user.emailVerified !== false) ? true : false;
   }
 
-  signInGoogle() {
+  GoogleAuth() {
     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
+  }
+
+  FacebookAuth(){
+    return this.AuthLogin(new firebase.auth.FacebookAuthProvider());
   }
 
   AuthLogin(provider) {
@@ -99,8 +114,8 @@ doRegister(value){
   }
 
   SetUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.id}`);
-    const userData: User {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userData: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
