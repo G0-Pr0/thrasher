@@ -14,7 +14,8 @@ div.gallery {
   display: inline-block;
   width: 180px;
 }
- 
+   
+   
 div.gallery:hover {
   border: 1px solid #777;
 }
